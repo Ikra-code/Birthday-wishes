@@ -1,0 +1,1027 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe4ec">
+<title>For You, My Love 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+:root {
+  --pink: #ff729b;
+  --deep: #d94c7b;
+  --light: #fff0f4;
+  --text: #74364d;
+  --white: #fffafd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, #ffe5ed, #fff4f0, #fce0f0);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+  outline: 3px solid #b83265;
+  outline-offset: 4px;
+}
+
+#hearts-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  animation: floatHeart linear forwards;
+  opacity: 0;
+}
+
+@keyframes floatHeart {
+  10% { opacity: .7; }
+  100% { transform: translateY(-115vh) rotate(40deg); opacity: 0; }
+}
+
+.scene {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  padding: 35px 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.scene.active {
+  display: flex;
+  animation: sceneIn .8s ease both;
+}
+
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(15px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+h1, h2, .script {
+  font-family: 'Dancing Script', cursive;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 9vw, 4.5rem);
+  line-height: 1.15;
+  color: var(--deep);
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: clamp(2rem, 7vw, 3.1rem);
+  color: var(--deep);
+  margin-bottom: 18px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.subtitle {
+  font-size: clamp(1.05rem, 4vw, 1.35rem);
+  max-width: 440px;
+  margin: 0 auto 25px;
+}
+
+.script {
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  line-height: 1.5;
+}
+
+.small-note {
+  font-size: .9rem;
+  margin-top: 15px;
+  opacity: .8;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #ff8caf, #f35e8b);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 27px;
+  min-height: 50px;
+  font-size: .98rem;
+  font-weight: 700;
+  box-shadow: 0 8px 22px #ed7a9a44;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px #ed7a9a66;
+}
+
+.primary-btn:active {
+  transform: scale(.96);
+}
+
+.secondary-btn {
+  background: #fff;
+  color: var(--deep);
+  border: 1px solid #ffc2d4;
+  border-radius: 50px;
+  padding: 12px 22px;
+  cursor: pointer;
+  margin-top: 14px;
+}
+
+.card {
+  width: min(100%, 530px);
+  padding: clamp(25px, 6vw, 42px);
+  border-radius: 28px;
+  background: #ffffffb8;
+  border: 1px solid #ffffffd9;
+  box-shadow: 0 18px 55px #a94c6c18;
+  backdrop-filter: blur(12px);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: .78rem;
+  color: #bd6b87;
+  margin-bottom: 12px;
+}
+
+/* PAGE 1: ENVELOPE */
+
+.envelope-wrap {
+  margin: 25px auto 35px;
+  width: min(75vw, 270px);
+  aspect-ratio: 1.35;
+  position: relative;
+  cursor: pointer;
+  filter: drop-shadow(0 15px 15px #b34b6a25);
+  transition: transform .3s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.envelope-wrap:hover {
+  transform: translateY(-5px) rotate(-1deg);
+}
+
+.envelope {
+  position: absolute;
+  inset: 15% 0 0;
+  background: #ff9db8;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #ffc4d4, #f87fa2);
+  clip-path: polygon(0 0, 100% 0, 50% 70%);
+  z-index: 2;
+}
+
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffb0c5;
+  clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+  z-index: 3;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 15% 0 0;
+  background: #f46f98;
+  border-radius: 9px;
+}
+
+.letter-peek {
+  position: absolute;
+  bottom: 17%;
+  left: 9%;
+  width: 82%;
+  height: 72%;
+  background: #fffaf4;
+  border-radius: 6px;
+  transition: transform .7s;
+  z-index: 1;
+}
+
+.heart-seal {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: 66px;
+  height: 66px;
+  background: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 35px;
+  box-shadow: 0 4px 15px #a93e6325;
+  animation: pulse 1.5s infinite;
+}
+
+.envelope-wrap.open .letter-peek {
+  transform: translateY(-55%) rotate(-4deg);
+}
+
+.envelope-wrap.open .heart-seal {
+  animation: sealOut .5s forwards;
+}
+
+@keyframes pulse {
+  50% { transform: translate(-50%, -50%) scale(1.12); }
+}
+
+@keyframes sealOut {
+  to { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+
+/* PAGE 2 */
+
+.star {
+  display: inline-block;
+  animation: twinkle 1.5s infinite alternate;
+}
+
+@keyframes twinkle {
+  to { transform: scale(1.35) rotate(15deg); opacity: .55; }
+}
+
+/* PAGE 3: BALLOONS */
+
+.balloon-area {
+  width: min(100%, 450px);
+  min-height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px auto;
+}
+
+.balloon {
+  border: none;
+  position: relative;
+  width: clamp(62px, 18vw, 84px);
+  height: clamp(80px, 22vw, 108px);
+  border-radius: 50% 50% 46% 46%;
+  background: var(--balloon-color);
+  box-shadow: inset -9px -8px 0 #0000000d,
+              inset 8px 7px 12px #ffffff55,
+              0 8px 15px #bd668522;
+  cursor: pointer;
+  animation: balloonFloat 2s ease-in-out infinite alternate;
+  transition: transform .25s, opacity .3s;
+}
+
+.balloon:nth-child(even) {
+  animation-delay: -.9s;
+}
+
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid var(--balloon-color);
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 35px;
+  background: #b76d8580;
+  left: 50%;
+  top: calc(100% + 3px);
+}
+
+@keyframes balloonFloat {
+  from { transform: translateY(4px) rotate(-3deg); }
+  to { transform: translateY(-9px) rotate(3deg); }
+}
+
+.balloon.popped {
+  animation: pop .28s forwards;
+  pointer-events: none;
+}
+
+@keyframes pop {
+  40% { transform: scale(1.35); }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.pop-heart {
+  position: fixed;
+  z-index: 8;
+  pointer-events: none;
+  font-size: 30px;
+  animation: heartBurst 1.2s ease-out forwards;
+}
+
+@keyframes heartBurst {
+  0% { transform: translate(-50%, 0) scale(.3); opacity: 0; }
+  25% { opacity: 1; transform: translate(-50%, -25px) scale(1.3); }
+  100% { opacity: 0; transform: translate(-50%, -110px) scale(.8) rotate(25deg); }
+}
+
+.last-balloon-message {
+  min-height: 55px;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  color: var(--deep);
+}
+
+/* PAGE 4 */
+
+.gift-box {
+  font-size: clamp(5rem, 20vw, 8rem);
+  margin: 10px 0;
+  display: inline-block;
+  animation: giftWiggle 2s infinite;
+}
+
+@keyframes giftWiggle {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(-8deg); }
+  30% { transform: rotate(8deg); }
+  45% { transform: rotate(-5deg); }
+  60% { transform: rotate(5deg); }
+}
+
+/* PAGE 5: LETTER */
+
+.love-letter {
+  position: relative;
+  width: min(100%, 510px);
+  padding: clamp(24px, 6vw, 42px);
+  background: #fffaf0;
+  border-radius: 4px 20px 20px 4px;
+  box-shadow: 0 15px 40px #95435b20;
+  border-left: 7px solid #f8a6bd;
+  text-align: left;
+}
+
+.love-letter h2 {
+  text-align: center;
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+}
+
+.love-letter p {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.35rem, 4.7vw, 1.7rem);
+  line-height: 1.7;
+  margin: 12px 0;
+}
+
+.signature {
+  text-align: right;
+  color: var(--deep);
+  font-weight: bold;
+}
+
+/* PAGE 6: REASONS */
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 490px);
+  margin-top: 12px;
+}
+
+.reason {
+  padding: 18px 12px;
+  border-radius: 18px;
+  background: #fffafc;
+  box-shadow: 0 6px 20px #ad537215;
+  font-size: .94rem;
+  line-height: 1.6;
+  animation: reasonIn .6s both;
+}
+
+.reason:nth-child(2) { animation-delay: .1s; }
+.reason:nth-child(3) { animation-delay: .2s; }
+.reason:nth-child(4) { animation-delay: .3s; }
+.reason:nth-child(5) { animation-delay: .4s; }
+.reason:nth-child(6) { animation-delay: .5s; }
+
+.reason span {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+@keyframes reasonIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PAGE 7: CAKE */
+
+.cake-area {
+  position: relative;
+  width: 260px;
+  height: 235px;
+  margin: 20px auto 15px;
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: 8px;
+  left: 5px;
+  width: 250px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffc6d7;
+  box-shadow: 0 5px 0 #ee9bb5;
+}
+
+.cake-bottom {
+  position: absolute;
+  bottom: 28px;
+  left: 35px;
+  width: 190px;
+  height: 75px;
+  background: linear-gradient(#ffacc6, #ff7fa7);
+  border-radius: 8px 8px 15px 15px;
+  box-shadow: inset -12px 0 #ec7196;
+}
+
+.cake-top {
+  position: absolute;
+  bottom: 85px;
+  left: 35px;
+  width: 190px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff0f5;
+  border: 3px solid #ffc0d4;
+}
+
+.icing {
+  position: absolute;
+  bottom: 64px;
+  left: 35px;
+  width: 190px;
+  height: 28px;
+  background: #fff0f5;
+  border-radius: 0 0 12px 12px;
+  z-index: 2;
+}
+
+.icing::before,
+.icing::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  width: 17px;
+  height: 25px;
+  background: #fff0f5;
+  border-radius: 0 0 10px 10px;
+}
+
+.icing::before { left: 40px; }
+.icing::after { left: 120px; }
+
+.candle {
+  position: absolute;
+  bottom: 123px;
+  width: 13px;
+  height: 43px;
+  border-radius: 4px 4px 2px 2px;
+  background: repeating-linear-gradient(
+    135deg, #fff 0 6px, #f58bac 6px 12px
+  );
+  z-index: 4;
+}
+
+.candle:nth-child(1) { left: 83px; }
+.candle:nth-child(2) { left: 123px; height: 52px; }
+.candle:nth-child(3) { left: 163px; }
+
+.flame {
+  position: absolute;
+  width: 17px;
+  height: 25px;
+  bottom: 100%;
+  left: -2px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  transform-origin: center bottom;
+  background: radial-gradient(ellipse at 65% 65%, #fff7a5 0 18%, #ffac36 42%, #ff6b6b 75%);
+  filter: drop-shadow(0 0 8px #ffb52c);
+  animation: flameFlicker .6s ease-in-out infinite alternate;
+}
+
+@keyframes flameFlicker {
+  from { transform: rotate(-45deg) scale(.9); }
+  to { transform: rotate(-42deg) scale(1.08); }
+}
+
+.cake-area.blown .flame {
+  animation: blowOut .4s forwards;
+}
+
+@keyframes blowOut {
+  to { transform: translate(15px, -8px) scale(0); opacity: 0; }
+}
+
+.wish-message {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  max-width: 440px;
+  margin: 10px auto;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10;
+  animation: sparkleOut 1.6s ease-out forwards;
+}
+
+@keyframes sparkleOut {
+  0% { transform: translate(0,0) scale(.2) rotate(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(180deg); opacity: 0; }
+}
+
+.big-birthday {
+  font-size: clamp(3rem, 11vw, 5.5rem);
+  text-shadow: 0 0 20px #ff92ba80;
+  animation: birthdayGlow 1.5s infinite alternate;
+}
+
+@keyframes birthdayGlow {
+  to { text-shadow: 0 0 35px #ff78a8, 0 0 65px #ffc5d9; transform: scale(1.03); }
+}
+
+/* PAGE 8 */
+
+.final-heart {
+  font-size: clamp(5rem, 18vw, 8rem);
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+@media (max-width: 390px) {
+  .scene { padding: 24px 15px; }
+  .reasons { gap: 9px; }
+  .reason { padding: 14px 8px; font-size: .86rem; }
+  .cake-area { transform: scale(.9); margin: 8px auto; }
+  .card { padding: 23px 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts-bg" aria-hidden="true"></div>
+
+<!-- SCENE 1: THE ENVELOPE -->
+<section class="scene active" id="scene1">
+  <div class="eyebrow">♡ A little something for you mere larky ♡</div>
+
+  <div class="envelope-wrap" id="envelope" role="button"
+       tabindex="0" aria-label="Open your love letter">
+    <div class="envelope-back"></div>
+    <div class="letter-peek"></div>
+    <div class="envelope"></div>
+    <div class="heart-seal">💗</div>
+  </div>
+
+  <h1 class="script">For you, My Love</h1>
+  <p class="subtitle">A tiny surprise made with a whole lot of love. 💌</p>
+  <p class="small-note">Tap the little heart to open your surprise ♡</p>
+</section>
+
+<!-- SCENE 2: BIRTHDAY INTRO -->
+<section class="scene" id="scene2">
+  <div class="card">
+    <div class="eyebrow"><span class="star">✧</span> Today is all about you <span class="star">✧</span></div>
+    <h1>It's Your<br>Special Day</h1>
+    <p class="script">Happy Birthday to the most amazing person 💖</p>
+    <p class="subtitle" style="margin-top:20px">
+      Today, the world became more beautiful because you were born. 🌷
+    </p>
+    <button class="primary-btn" data-next="3">TAP TO CONTINUE 💕</button>
+  </div>
+</section>
+
+<!-- SCENE 3: POP THE BALLOONS -->
+<section class="scene" id="scene3">
+  <div class="card">
+    <div class="eyebrow">A little game just for you</div>
+    <h1>Pop the Balloons 🎈</h1>
+    <p class="subtitle">Tap every balloon and collect the love hidden inside! 💗</p>
+
+    <div class="balloon-area" id="balloonArea"></div>
+
+    <p id="balloonCount" class="small-note" aria-live="polite">
+      Balloons left: 6 🎈
+    </p>
+    <p class="last-balloon-message" id="lastBalloonMessage" aria-live="polite"></p>
+
+    <button class="primary-btn" id="balloonContinue" hidden>
+      CONTINUE THE MAGIC ✨
+    </button>
+  </div>
+</section>
+
+<!-- SCENE 4: GIFT REVEAL -->
+<section class="scene" id="scene4">
+  <div class="card">
+    <div class="eyebrow">Psst... something special awaits</div>
+    <div class="gift-box">🎁</div>
+    <h1>Hey Sweetheart!</h1>
+    <p class="script">Your birthday gift is ready! 💝</p>
+    <p class="subtitle" style="margin-top:18px">
+      It's wrapped in love, tied with hugs, and filled with all my heart.
+    </p>
+    <button class="primary-btn" data-next="5">TAP HERE FOR YOUR GIFT 🎀</button>
+  </div>
+</section>
+
+<!-- SCENE 5: LOVE LETTER -->
+<section class="scene" id="scene5">
+  <div class="love-letter">
+    <h2>A Letter For You My Love 💌</h2>
+
+    <p>Happy Birthday, Mere Jahanzaib! ❤️🥹</p>
+<p>Meri jaan, ❤️</p>
+    <p>
+     Happy birthday to the most special person in my life. ❤️ Kash aaj main aapke paas hoti last year ki trha or  apko samne baitha k birthday wish krti, lekin filhal hmein yeh din door reh kr hi manana par rha hai. 🥺
+    </p>
+
+    <p>
+      Main shyd hr bar apko bta nhi pati, lekin mjy ap pr boht fakhar hai. Ap hmary future k liye itni mehnat krty hen, or main dil se dua karti hoon ke Allah apki har mushkil asaan kry or apko apki mehnat ka behtareen sila dy. Ap hmesha khush rhein, Q k apki khushi mere liye bohat important hai. ❤️
+    </p>
+
+    <p>
+     InshaAllah woh din bhi jld ay ga jab hmein yeh special din door reh kr nhi manana pryga. 🤍
+
+    </p>
+
+    <p>Meri Allah se bas yehi dua hai k apko sehat, sakoon, khushiyan aur kamyabi mily. Allah humare drmiyan k faslay khatam kry or hmein hamesha aik sath, khush aur salamat rkhy. Ameen. 🤲🏻❤️</p>
+ <p>Happy Birthday, my love! 🫶🏻
+</p>
+
+<p>
+Love you soooooooooo much mere jahanzaib 🫂
+
+
+    </p>
+
+<p>
+     Allah ka shukar hai k ap meri zindagi mein hen.
+
+    </p>
+
+<p>
+     I miss you, I love you, and I pray that your coming year brings you everything your heart wishes for. ❤️
+
+    </p>
+
+
+    <p class="signature">Hamesha aapki  ❤️</p>
+  </div>
+
+  <button class="primary-btn" data-next="6">MORE SURPRISES WAITING... 💕</button>
+</section>
+
+<!-- SCENE 6: REASONS I LOVE YOU -->
+<section class="scene" id="scene6">
+  <div class="card">
+    <div class="eyebrow">A little list from my heart</div>
+    <h1>Reasons I Love You 💖</h1>
+
+    <div class="reasons">
+      <div class="reason"><span>😊</span>You make me feel loved, even from miles away.</div>
+      <div class="reason"><span>🫶</span>You work so hard to build a beautiful future for us.</div>
+      <div class="reason"><span>🌷</span>You are my husband, my best friend, and my safe place.</div>
+      <div class="reason"><span>❤️</span>You are one of the most beautiful blessings Allah gave me.</div>
+      <div class="reason"><span>✨</span>The simplest conversation with you can make my day.</div>
+      <div class="reason"><span>💗</span>Because being with you feels like home.</div>
+
+    </div>
+
+    <p class="subtitle" style="margin-top:22px">
+      No matter how many reasons I write, they will never be enough to explain how much I love you ❤️♾️
+    </p>
+    <button class="primary-btn" data-next="7">ONE LAST LITTLE MAGIC 🎂</button>
+  </div>
+</section>
+
+<!-- SCENE 7: BIRTHDAY CAKE -->
+<section class="scene" id="scene7">
+  <div class="card">
+    <div class="eyebrow">Close your eyes and make a wish</div>
+    <h1>A Cake Just For You 🎂</h1>
+
+    <div class="cake-area" id="cakeArea">
+      <div class="cake-plate"></div>
+      <div class="cake-bottom"></div>
+      <div class="cake-top"></div>
+      <div class="icing"></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+    </div>
+
+    <p class="wish-message" id="wishMessage" aria-live="polite">
+      Candles are glowing! Now make a wish and blow them out. 🕯️💖
+    </p>
+
+    <button class="primary-btn" id="wishBtn">MAKE A WISH ✨</button>
+  </div>
+</section>
+
+<!-- SCENE 8: FOREVER YOURS -->
+<section class="scene" id="scene8">
+  <div class="card">
+    <div class="eyebrow">One last thing, my love...</div>
+    <div class="final-heart">❤️</div>
+    <h1 class="big-birthday">Happy Birthday<br>My Love!</h1>
+
+   
+    <p class="subtitle" style="margin-top:18px">
+      I miss you sooooooooooooo much mere Jahanzaib 🥹💗
+      <br><br>
+      Ham abhi door hen lekin mein roz dua krti hun k jald he ham sath hon hmesha k liye. InshaAllah ham mil kr boht sari yadein bnaein gy. 
+<br><br>
+Bas itna yad rakhna k mein apko sab cy ziada pyar krti hun, saaaaaabbbbb cy ziada. Ap meri jan ho, mere dil ka sakoon ho ❤️
+      <br><br>
+      Happy Birthday my Love ❤️
+    </p>
+
+    <p class="script">Hmesha apki, Sirf apki 💞</p>
+
+    <button class="primary-btn" id="replayBtn">RELIVE OUR LITTLE MAGIC ↻</button>
+  </div>
+</section>
+
+<script>
+const scenes = [...document.querySelectorAll('.scene')];
+const heartsBg = document.getElementById('hearts-bg');
+let currentScene = 1;
+let balloonsPopped = 0;
+const totalBalloons = 6;
+let wishMade = false;
+let balloonLocked = false;
+
+function showScene(number) {
+  currentScene = number;
+
+  scenes.forEach((scene, index) => {
+    scene.classList.toggle('active', index === number - 1);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Refresh entrance animation on the newly visible scene.
+  const active = document.getElementById('scene' + number);
+  active.style.animation = 'none';
+  void active.offsetWidth;
+  active.style.animation = '';
+
+  if (number === 3) setupBalloons();
+  if (number === 7) resetCake();
+  if (number === 8) celebrateFinale();
+}
+
+document.querySelectorAll('[data-next]').forEach(button => {
+  button.addEventListener('click', () => {
+    showScene(Number(button.dataset.next));
+  });
+});
+
+// Floating hearts in the background
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function createFloatingHeart() {
+  if (reducedMotion) return;
+
+  const heart = document.createElement('span');
+  heart.className = 'floating-heart';
+  heart.textContent = ['♡', '💕', '💗', '✨'][Math.floor(Math.random() * 4)];
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (14 + Math.random() * 22) + 'px';
+  heart.style.animationDuration = (7 + Math.random() * 7) + 's';
+
+  heartsBg.appendChild(heart);
+  setTimeout(() => heart.remove(), 15000);
+}
+
+if (!reducedMotion) setInterval(createFloatingHeart, 650);
+
+// Scene 1: open envelope
+const envelope = document.getElementById('envelope');
+
+function openEnvelope() {
+  if (envelope.classList.contains('open')) return;
+  envelope.classList.add('open');
+
+  setTimeout(() => showScene(2), 700);
+}
+
+envelope.addEventListener('click', openEnvelope);
+envelope.addEventListener('keydown', event => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    openEnvelope();
+  }
+});
+
+// Small heart animation at a clicked position
+function heartBurst(x, y) {
+  const heart = document.createElement('span');
+  heart.className = 'pop-heart';
+  heart.textContent = ['💗', '💖', '💕', '💘', '❤️'][Math.floor(Math.random() * 5)];
+  heart.style.left = x + 'px';
+  heart.style.top = y + 'px';
+
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 1300);
+}
+
+// Scene 3: balloon popping
+const balloonArea = document.getElementById('balloonArea');
+const balloonCount = document.getElementById('balloonCount');
+const lastBalloonMessage = document.getElementById('lastBalloonMessage');
+const balloonContinue = document.getElementById('balloonContinue');
+
+const balloonColors = [
+  '#ff8fab', '#ffc66d', '#a5a6f6',
+  '#ff9eaf', '#a4dfca', '#f8a4d4'
+];
+
+function setupBalloons() {
+  balloonsPopped = 0;
+  balloonLocked = false;
+  balloonArea.innerHTML = '';
+  balloonCount.textContent = 'Balloons left: ' + totalBalloons + ' 🎈';
+  lastBalloonMessage.textContent = '';
+  balloonContinue.hidden = true;
+
+  balloonColors.forEach((color, index) => {
+    const balloon = document.createElement('button');
+    balloon.className = 'balloon';
+    balloon.style.setProperty('--balloon-color', color);
+    balloon.style.animationDelay = (index * 0.13) + 's';
+    balloon.setAttribute('aria-label', 'Pop balloon ' + (index + 1));
+    balloon.type = 'button';
+
+    balloon.addEventListener('click', () => {
+      if (balloon.classList.contains('popped') || balloonLocked) return;
+
+      const rect = balloon.getBoundingClientRect();
+      heartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+      balloon.classList.add('popped');
+      balloon.setAttribute('aria-label', 'Popped balloon');
+
+      balloonsPopped++;
+      balloonCount.textContent =
+        'Balloons left: ' + (totalBalloons - balloonsPopped) + ' 🎈';
+
+      if (balloonsPopped === totalBalloons) {
+        balloonLocked = true;
+        lastBalloonMessage.textContent = 'Nobody compares to you. 💗';
+        balloonCount.textContent = 'You found all the love! 💖';
+        balloonContinue.hidden = false;
+        showerHearts();
+      }
+    });
+
+    balloonArea.appendChild(balloon);
+  });
+}
+
+balloonContinue.addEventListener('click', () => showScene(4));
+
+// Celebration burst of hearts
+function showerHearts() {
+  for (let i = 0; i < 18; i++) {
+    setTimeout(() => {
+      heartBurst(
+        Math.random() * window.innerWidth,
+        window.innerHeight * (0.35 + Math.random() * 0.4)
+      );
+    }, i * 80);
+  }
+}
+
+// Scene 7: make a wish
+const cakeArea = document.getElementById('cakeArea');
+const wishMessage = document.getElementById('wishMessage');
+const wishBtn = document.getElementById('wishBtn');
+
+function resetCake() {
+  wishMade = false;
+  cakeArea.classList.remove('blown');
+  wishMessage.textContent =
+    'Candles are glowing! Now make a wish and blow them out. 🕯️💖';
+  wishBtn.hidden = false;
+  wishBtn.textContent = 'MAKE A WISH ✨';
+}
+
+function sparkleBurst() {
+  const symbols = ['✨', '💖', '⭐', '💕', '🎉', '🌟'];
+
+  for (let i = 0; i < 65; i++) {
+    const sparkle = document.createElement('span');
+    sparkle.className = 'sparkle';
+    sparkle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    sparkle.style.left = (10 + Math.random() * 80) + 'vw';
+    sparkle.style.top = (25 + Math.random() * 55) + 'vh';
+    sparkle.style.setProperty('--dx', (Math.random() - .5) * 180 + 'px');
+    sparkle.style.setProperty('--dy', (-40 - Math.random() * 200) + 'px');
+    sparkle.style.fontSize = (15 + Math.random() * 24) + 'px';
+
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 1800);
+  }
+}
+
+wishBtn.addEventListener('click', () => {
+  if (wishMade) return;
+  wishMade = true;
+
+  cakeArea.classList.add('blown');
+  wishMessage.textContent =
+    'Wish made! May every beautiful dream in your heart come true. 💫';
+  wishBtn.hidden = true;
+
+  sparkleBurst();
+
+  setTimeout(() => {
+    showScene(8);
+  }, 2400);
+});
+
+// Final page celebration
+function celebrateFinale() {
+  if (!reducedMotion) sparkleBurst();
+}
+
+// Replay the full birthday journey
+document.getElementById('replayBtn').addEventListener('click', () => {
+  envelope.classList.remove('open');
+  showScene(1);
+});
+
+// Allow keyboard users to activate buttons normally.
+// Start on the first page.
+showScene(1);
+</script>
+</body>
+</html>
